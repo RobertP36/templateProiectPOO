@@ -10,7 +10,7 @@ Functionalitati
 
     Sistem de Pasageri: Adaugarea pasagerilor cu verificare automata a capacitatii locurilor.
 
-    Meniu Interactiv: Interfata in consola pentru utilizator.
+    Meniu Interactiv: Interfata in consola pentru utilizator. 
 
 Concepte POO Implementate
     Mostenire si Polimorfism: Ierarhie de clase pentru angajati cu functii virtuale (afisare).
