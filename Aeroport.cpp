@@ -185,7 +185,10 @@ void Meniu::run() {
     int optiune = -1;
     while (optiune != 0) {
         afiseazaOptiuni();
-        std::cin >> optiune;
+        if (!(std::cin >> optiune)) {
+            std::cout << "\nInput terminat sau eroare. Inchidere program...\n";
+            break; 
+        }
 
         try {
             switch (optiune) {
