@@ -16,15 +16,15 @@ int main() {
     } catch (const CapacitateDepasitaException& e) {
         // Gasim exceptia
         std::cerr << "\n[EROARE CRITICA]: " << e.what() << std::endl;
-        return 1;
+        return 0;
     } catch (const std::exception& e) {
         // Gasim eroare standard
         std::cerr << "\n[EROARE SISTEM]: " << e.what() << std::endl;
-        return 1;
+        return 0;
     } catch (...) {
         // Erori necunoscute
         std::cerr << "\n[EROARE]: A aparut o problema neasteptata." << std::endl;
-        return 1;
+        return 0;
     }
 
     return 0;
