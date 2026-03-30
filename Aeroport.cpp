@@ -174,6 +174,8 @@ void Meniu::afiseazaOptiuni() const {
     std::cout << "4. Afiseaza Toate Zborurile\n";
     std::cout << "5. Sterge Zbor\n";
     std::cout << "6. Adauga Pasager in Zbor\n";
+    std::cout << "7. Actualizeaza Ore Pilot\n";
+    std::cout << "8. Afiseaza tot personalul\n";
     std::cout << "0. Iesire\n";
     std::cout << "Optiune: ";
 }
@@ -197,6 +199,8 @@ void Meniu::run() {
                     break;
                 case 5: stergeZbor(); break;
                 case 6: adaugaPasagerInZbor(); break;
+                case 7: actualizeazaOrePilot(); break;
+                case 8: afiseazaTotPersonalul(); break;
                 case 0: std::cout << "La revedere!\n"; break;
                 default: std::cout << "Optiune invalida!\n";
             }
@@ -314,6 +318,43 @@ void Meniu::stergeZbor() {
     delete zboruri.back(); 
     zboruri.pop_back();
     std::cout << "Ultimul zbor a fost sters.\n";
+}
+
+void Meniu::actualizeazaOrePilot() {
+    int idCautat, oreNoi;
+    std::cout << "Introduceti ID-ul pilotului: ";
+    std::cin >> idCautat;
+
+    bool gasit = false;
+    for (auto* angajat : personal) {
+        // Încercăm să vedem dacă angajatul este un Pilot (Downcasting)
+        Pilot* p = dynamic_cast<Pilot*>(angajat);
+        
+        if (p && p->getID() == idCautat) {
+            std::cout << "Pilot gasit! Introduceti noul numar de ore de zbor: ";
+            std::cin >> oreNoi;
+            p->setOreZbor(oreNoi);
+            std::cout << "Ore actualizate cu succes!\n";
+            gasit = true;
+            break;
+        }
+    }
+
+    if (!gasit) {
+        std::cout << "Pilotul cu ID-ul " << idCautat << " nu a fost gasit sau nu este Pilot.\n";
+    }
+}
+void Meniu::afiseazaTotPersonalul() const {
+    if (personal.empty()) {
+        std::cout << "Nu exista angajati inregistrati in sistem.\n";
+        return;
+    }
+
+    std::cout << "\n LISTA PERSONAL AEROPORT \n";
+    for (const auto* angajat : personal) {
+        angajat->afisare(); 
+        std::cout << "Final lista de personal\n";
+    }
 }
 
 Meniu::~Meniu() {

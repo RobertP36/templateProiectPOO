@@ -26,7 +26,7 @@ protected:
 public:
     AngajatAeroport(const std::string& nume = "Anonim", int id = 0);
     virtual ~AngajatAeroport() {} //polimorfism
-
+    int getID() const { return idAngajat; }
     // clasa abstractă
     virtual void afiseazaAtributii() const = 0; 
 
@@ -95,8 +95,8 @@ public:
 
     void afisare() const override;
     
-    //int getOreZbor() const { return oreZbor; }
-    //void setOreZbor(int ore) { oreZbor = ore; }
+    int getOreZbor() const { return oreZbor; }
+    void setOreZbor(int ore) { oreZbor = ore; }
 };
 
 class Stewardesa : public AngajatAeroport {
@@ -193,6 +193,8 @@ private:
     void creazaZbor();
     void stergeZbor();
     void adaugaPasagerInZbor();
+    void actualizeazaOrePilot();
+    void afiseazaTotPersonalul() const;
 
 public:
     Meniu() = default;
