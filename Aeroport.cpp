@@ -1,12 +1,12 @@
 #include "Aeroport.h"
 // Implementare angajati
-AngajatAeroport::AngajatAeroport(std::string nume, int id) : nume(nume), idAngajat(id) {}
+AngajatAeroport::AngajatAeroport(const std::string& nume, int id) : nume(nume), idAngajat(id) {}
 
 void AngajatAeroport::afisare() const {
     std::cout << "ID: " << idAngajat << " | Nume: " << nume << std::endl;
 }
 
-PersonalSecuritate::PersonalSecuritate(std::string nume, int id, std::string zona, bool arma)
+PersonalSecuritate::PersonalSecuritate(const std::string& nume, int id, const std::string& zona, bool arma)
     : AngajatAeroport(nume, id), zonaDeservita(zona), areArma(arma) {}
 
 void PersonalSecuritate::afiseazaAtributii() const {
@@ -20,7 +20,7 @@ void PersonalSecuritate::afisare() const {
               << " | Inarmat: " << (areArma ? "Da" : "Nu") << "\n";
 }
 
-PersonalTehnic::PersonalTehnic(std::string nume, int id, std::string spec, int ani)
+PersonalTehnic::PersonalTehnic(const std::string& nume, int id, const std::string& spec, int ani)
     : AngajatAeroport(nume, id), specializare(spec), aniExperienta(ani) {}
 
 void PersonalTehnic::afiseazaAtributii() const {
@@ -52,7 +52,7 @@ void OfiterOperatiuni::afisare() const {
     std::cout << "Nivel Autorizare: " << nivelAutorizare << " (Acces Total)\n";
 }
 
-Pilot::Pilot(const std::string nume, int id, int ore, std::string tipLicenta) 
+Pilot::Pilot(const std::string& nume, int id, int ore, const std::string& tipLicenta) 
     : AngajatAeroport(nume, id), oreZbor(ore), licenta(tipLicenta) {}
 
 // Implementarea metodei polimorfice
@@ -65,7 +65,7 @@ void Pilot::afisare() const {
     std::cout << "Licenta: " << licenta << " | Ore de zbor: " << oreZbor << "\n";
 }
 
-Stewardesa::Stewardesa(std::string nume, int id, int nrZboruri) 
+Stewardesa::Stewardesa(const std::string& nume, int id, int nrZboruri) 
     : AngajatAeroport(nume, id), nrZboruriEfectuate(nrZboruri) {}
 
 /*void Stewardesa::adaugaLimba(const std::string& limba) {
@@ -90,7 +90,7 @@ void Stewardesa::afisare() const {
 }
 
 // Implementare avion - Regula celor 3
-Avion::Avion(std::string model, int cap, int serie) : model(model), capacitateMaxima(cap), serieMotor(new int(serie)) {}
+Avion::Avion(const std::string& model, int cap, int serie) : model(model), capacitateMaxima(cap), serieMotor(new int(serie)) {}
 
 // Destructor 
 Avion::~Avion() {
@@ -122,7 +122,7 @@ void Avion::afisare() const {
 }
 
 // Implementare Zbor si Pasager
-Pasager::Pasager(const std::string nume, std::string pasaport, int varsta) 
+Pasager::Pasager(const std::string& nume, const std::string& pasaport, int varsta) 
     : nume(nume), nrPasaport(pasaport), varsta(varsta) {}
 
 void Pasager::afisare() const {

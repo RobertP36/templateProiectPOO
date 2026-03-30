@@ -24,7 +24,7 @@ protected:
     int idAngajat;
 
 public:
-    AngajatAeroport(std::string nume = "Anonim", int id = 0);
+    AngajatAeroport(const std::string& nume = "Anonim", int id = 0);
     virtual ~AngajatAeroport() {} //polimorfism
 
     // clasa abstractă
@@ -39,7 +39,7 @@ protected:
     bool areArma;
 
 public:
-    explicit PersonalSecuritate(std::string nume = "Anonim", int id = 0, std::string zona = "Terminal", bool arma = false);
+    explicit PersonalSecuritate(const std::string& nume = "Anonim", int id = 0, const std::string& zona = "Terminal", bool arma = false);
     
     void afiseazaAtributii() const override;
     
@@ -54,7 +54,7 @@ protected:
     int aniExperienta;
 
 public:
-    explicit PersonalTehnic(std::string nume = "Anonim", int id = 0, std::string spec = "General", int ani = 0);
+    explicit PersonalTehnic(const std::string& nume = "Anonim", int id = 0, const std::string& spec = "General", int ani = 0);
     
     // metoda virtuala pura
     void afiseazaAtributii() const override;
@@ -89,7 +89,7 @@ private:
 
 public:
     // Constructor care apeleaza constructorul clasei de baza
-    explicit Pilot(const std::string nume = "Necunoscut", int id = 0, int ore = 0, std::string tipLicenta = "PPL");
+    explicit Pilot(const std::string& nume = "Necunoscut", int id = 0, int ore = 0, const std::string& tipLicenta = "PPL");
     // Polimorfism
     void afiseazaAtributii() const override;
 
@@ -105,7 +105,7 @@ private:
     int nrZboruriEfectuate;
 
 public:
-    explicit Stewardesa(std::string nume = "Anonim", int id = 0, int nrZboruri = 0);
+    explicit Stewardesa(const std::string& nume = "Anonim", int id = 0, int nrZboruri = 0);
 
     void adaugaLimba(const std::string& limba);
 
@@ -124,7 +124,7 @@ private:
     int varsta;
 
 public:
-    explicit Pasager(const std::string nume = "Necunoscut", std::string pasaport = "N/A", int varsta = 0);
+    explicit Pasager(const std::string& nume = "Necunoscut", const std::string& pasaport = "N/A", int varsta = 0);
 
     ~Pasager() = default;
 
@@ -143,7 +143,7 @@ private:
     int* serieMotor; // Resursă alocata dinamic - Regula celor 3
 
 public:
-    explicit Avion(std::string model = "Necunoscut", int cap = 0, int serie = 0);
+    explicit Avion(const std::string& model = "Necunoscut", int cap = 0, int serie = 0);
     
     // Regula celor 3
     virtual ~Avion();                             // Destructor 
