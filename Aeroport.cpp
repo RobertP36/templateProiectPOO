@@ -100,8 +100,8 @@ Avion::~Avion() {
 // Constructor de copiere 
 Avion::Avion(const Avion& ot) 
     : model(ot.model), 
-      capacitateMaxima(ot.capacitateMaxima), 
-      serieMotor(ot.serieMotor) {}
+    capacitateMaxima(ot.capacitateMaxima), 
+    serieMotor(new int(*ot.serieMotor)) {}
 
 // Operator de atribuire 
 Avion& Avion::operator=(const Avion& ot) {
