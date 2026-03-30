@@ -1,4 +1,4 @@
-Platforma Gestiune Aeroport - Proiect POO
+Platforma Management Aeroport - Proiect POO
 Acest proiect reprezinta un sistem de gestiune pentru un aeroport, dezvoltat in C++, utilizand principiile Programarii Orientate pe Obiecte (POO).
 
 Functionalitati
