@@ -62,7 +62,7 @@ void Pilot::afiseazaAtributii() const {
 
 void Pilot::afisare() const {
     AngajatAeroport::afisare(); 
-    std::cout << "Licenta: " << licenta << " | Ore de zbor: " << oreZbor << "\n";
+    std::cout << "Ore de zbor: " << getOreZbor() << " | Tip Licenta: " << licenta << "\n";
 }
 
 Stewardesa::Stewardesa(const std::string& nume, int id, int nrZboruri) 
