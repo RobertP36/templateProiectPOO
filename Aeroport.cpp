@@ -34,7 +34,7 @@ void PersonalTehnic::afisare() const {
               << " | Experienta: " << aniExperienta << " ani\n";
 }
 
-OfiterOperatiuni::OfiterOperatiuni(std::string nume, int id, int nivel)
+OfiterOperatiuni::OfiterOperatiuni(const std::string& nume, int id, int nivel)
     : AngajatAeroport(nume, id), 
       PersonalSecuritate(nume, id), 
       PersonalTehnic(nume, id), 
@@ -52,7 +52,7 @@ void OfiterOperatiuni::afisare() const {
     std::cout << "Nivel Autorizare: " << nivelAutorizare << " (Acces Total)\n";
 }
 
-Pilot::Pilot(std::string nume, int id, int ore, std::string tipLicenta) 
+Pilot::Pilot(const std::string nume, int id, int ore, std::string tipLicenta) 
     : AngajatAeroport(nume, id), oreZbor(ore), licenta(tipLicenta) {}
 
 // Implementarea metodei polimorfice
@@ -68,9 +68,9 @@ void Pilot::afisare() const {
 Stewardesa::Stewardesa(std::string nume, int id, int nrZboruri) 
     : AngajatAeroport(nume, id), nrZboruriEfectuate(nrZboruri) {}
 
-void Stewardesa::adaugaLimba(const std::string& limba) {
+/*void Stewardesa::adaugaLimba(const std::string& limba) {
     limbiStraine.push_back(limba);
-}
+}*/
 
 void Stewardesa::afiseazaAtributii() const {
     std::cout << "Atributii Stewardesa: Siguranta pasagerilor, servicii la bord si asistenta in timpul zborului.\n";
@@ -90,9 +90,7 @@ void Stewardesa::afisare() const {
 }
 
 // Implementare avion - Regula celor 3
-Avion::Avion(std::string model, int cap, int serie) : model(model), capacitateMaxima(cap) {
-    serieMotor = new int(serie); 
-}
+Avion::Avion(std::string model, int cap, int serie) : model(model), capacitateMaxima(cap), serieMotor(new int(serie)) {}
 
 // Destructor 
 Avion::~Avion() {
@@ -100,11 +98,10 @@ Avion::~Avion() {
 }
 
 // Constructor de copiere 
-Avion::Avion(const Avion& ot) {
-    model = ot.model;
-    capacitateMaxima = ot.capacitateMaxima;
-    serieMotor = new int(*ot.serieMotor); 
-}
+Avion::Avion(const Avion& ot) 
+    : model(ot.model), 
+      capacitateMaxima(ot.capacitateMaxima), 
+      serieMotor(ot.serieMotor) {}
 
 // Operator de atribuire 
 Avion& Avion::operator=(const Avion& ot) {
@@ -125,7 +122,7 @@ void Avion::afisare() const {
 }
 
 // Implementare Zbor si Pasager
-Pasager::Pasager(std::string nume, std::string pasaport, int varsta) 
+Pasager::Pasager(const std::string nume, std::string pasaport, int varsta) 
     : nume(nume), nrPasaport(pasaport), varsta(varsta) {}
 
 void Pasager::afisare() const {
@@ -136,14 +133,14 @@ void Pasager::afisare() const {
 
 int Zbor::contorZboruri = 0; 
 
-Zbor::Zbor(std::string cod, Avion* a, Pilot* p) 
+Zbor::Zbor(const std::string& cod, Avion* a, Pilot* p) 
     : codZbor(cod), aeronava(a), capitan(p) {
     contorZboruri++;
 }
 
-int Zbor::getNrZboruri() {
+/*int Zbor::getNrZboruri() {
     return contorZboruri;
-}
+}*/
 
 void Zbor::adaugaPasager(const Pasager& p) {
     if (aeronava == nullptr) {
@@ -186,7 +183,7 @@ void Meniu::run() {
     while (optiune != 0) {
         afiseazaOptiuni();
         if (!(std::cin >> optiune)) {
-            std::cout << "\nInput terminat sau eroare. Inchidere program...\n";
+                        std::cout << "\nInput terminat sau eroare. Inchidere program...\n";
             break; 
         }
 
@@ -196,7 +193,7 @@ void Meniu::run() {
                 case 2: adaugaAngajat(); break;
                 case 3: creazaZbor(); break;
                 case 4: 
-                    for(auto z : zboruri) z->afisareDetaliiZbor(); 
+                    for(const auto* z : zboruri) z->afisareDetaliiZbor(); 
                     break;
                 case 5: stergeZbor(); break;
                 case 6: adaugaPasagerInZbor(); break;

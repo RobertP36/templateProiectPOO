@@ -39,7 +39,7 @@ protected:
     bool areArma;
 
 public:
-    PersonalSecuritate(std::string nume = "Anonim", int id = 0, std::string zona = "Terminal", bool arma = false);
+    explicit PersonalSecuritate(std::string nume = "Anonim", int id = 0, std::string zona = "Terminal", bool arma = false);
     
     void afiseazaAtributii() const override;
     
@@ -54,7 +54,7 @@ protected:
     int aniExperienta;
 
 public:
-    PersonalTehnic(std::string nume = "Anonim", int id = 0, std::string spec = "General", int ani = 0);
+    explicit PersonalTehnic(std::string nume = "Anonim", int id = 0, std::string spec = "General", int ani = 0);
     
     // metoda virtuala pura
     void afiseazaAtributii() const override;
@@ -71,7 +71,7 @@ private:
 
 public:
     // Constructorul
-    OfiterOperatiuni(std::string nume = "Anonim", int id = 0, int nivel = 1);
+    explicit OfiterOperatiuni(const std::string& nume = "Anonim", int id = 0, int nivel = 1);
 
     // Suprascrierea metodei virtuale pure 
     void afiseazaAtributii() const override;
@@ -89,14 +89,14 @@ private:
 
 public:
     // Constructor care apeleaza constructorul clasei de baza
-    Pilot(std::string nume = "Necunoscut", int id = 0, int ore = 0, std::string tipLicenta = "PPL");
+    explicit Pilot(const std::string nume = "Necunoscut", int id = 0, int ore = 0, std::string tipLicenta = "PPL");
     // Polimorfism
     void afiseazaAtributii() const override;
 
     void afisare() const override;
     
-    int getOreZbor() const { return oreZbor; }
-    void setOreZbor(int ore) { oreZbor = ore; }
+    //int getOreZbor() const { return oreZbor; }
+    //void setOreZbor(int ore) { oreZbor = ore; }
 };
 
 class Stewardesa : public AngajatAeroport {
@@ -105,7 +105,7 @@ private:
     int nrZboruriEfectuate;
 
 public:
-    Stewardesa(std::string nume = "Anonim", int id = 0, int nrZboruri = 0);
+    explicit Stewardesa(std::string nume = "Anonim", int id = 0, int nrZboruri = 0);
 
     void adaugaLimba(const std::string& limba);
 
@@ -124,14 +124,14 @@ private:
     int varsta;
 
 public:
-    Pasager(std::string nume = "Necunoscut", std::string pasaport = "N/A", int varsta = 0);
+    explicit Pasager(const std::string nume = "Necunoscut", std::string pasaport = "N/A", int varsta = 0);
 
     ~Pasager() = default;
 
     // Getters pentru încapsulare
-    std::string getNume() const { return nume; }
-    std::string getPasaport() const { return nrPasaport; }
-    int getVarsta() const { return varsta; }
+    //std::string getNume() const { return nume; }
+    //std::string getPasaport() const { return nrPasaport; }
+    //int getVarsta() const { return varsta; }
 
     void afisare() const;
 };
@@ -143,7 +143,7 @@ private:
     int* serieMotor; // Resursă alocata dinamic - Regula celor 3
 
 public:
-    Avion(std::string model = "Necunoscut", int cap = 0, int serie = 0);
+    explicit Avion(std::string model = "Necunoscut", int cap = 0, int serie = 0);
     
     // Regula celor 3
     virtual ~Avion();                             // Destructor 
@@ -152,8 +152,8 @@ public:
 
     int getCapacitate() const { return capacitateMaxima; }
     
-    void setCapacitate(int cap) { capacitateMaxima = cap; }
-    std::string getModel() const { return model; }
+    //void setCapacitate(int cap) { capacitateMaxima = cap; }
+    //std::string getModel() const { return model; }
 
     virtual void afisare() const; 
 };
@@ -167,9 +167,9 @@ private:
     std::vector<Pasager> pasageri;
 
 public:
-    Zbor(std::string cod = "", Avion* a = nullptr, Pilot* p = nullptr);
+    explicit Zbor(const std::string& cod = "", Avion* a = nullptr, Pilot* p = nullptr);
     
-    static int getNrZboruri();
+    //static int getNrZboruri();
 
     // Metoda care validează datele
     void adaugaPasager(const Pasager& p);
