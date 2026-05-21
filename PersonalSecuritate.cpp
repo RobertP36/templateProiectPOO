@@ -13,3 +13,8 @@ void PersonalSecuritate::afisare() const {
     std::cout << "Zona: " << zonaDeservita 
               << " | Inarmat: " << (areArma ? "Da" : "Nu") << "\n";
 }
+
+double PersonalSecuritate::calculeazaSalariu() const {
+    double baza = 2800.0;
+    return areArma ? baza + 500.0 : baza;
+}
