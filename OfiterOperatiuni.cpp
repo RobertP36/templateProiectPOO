@@ -17,3 +17,8 @@ void OfiterOperatiuni::afisare() const {
     AngajatAeroport::afisare();
     std::cout << "Nivel Autorizare: " << nivelAutorizare << " (Acces Total)\n";
 }
+
+double OfiterOperatiuni::calculeazaSalariu() const {
+    double baza = 4500.0;
+    return baza + aniExperienta * 150.0 + (areArma ? 300.0 : 0.0);
+}
