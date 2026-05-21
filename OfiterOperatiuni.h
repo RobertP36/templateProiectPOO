@@ -20,6 +20,8 @@ public:
     // Suprascrierea metodei de afișare - includerea atributelor relevante
     void afisare() const override;
 
+    double calculeazaSalariu() const override;
+
     ~OfiterOperatiuni() = default;
 };
 
