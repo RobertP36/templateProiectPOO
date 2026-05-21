@@ -23,3 +23,8 @@ void Stewardesa::afisare() const {
     }
     std::cout << std::endl;
 }
+
+double Stewardesa::calculeazaSalariu() const {
+    double baza = 3000.0;
+    return baza + nrZboruriEfectuate * 50.0;  // 50 lei per zbor
+}
