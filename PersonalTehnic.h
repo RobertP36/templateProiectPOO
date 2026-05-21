@@ -16,6 +16,8 @@ public:
     
     void afisare() const override;
 
+    double calculeazaSalariu() const override;
+
     virtual ~PersonalTehnic() = default;
 };
 
