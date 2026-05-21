@@ -14,6 +14,7 @@ public:
     void afiseazaAtributii() const override;
     
     void afisare() const override;
+    double calculeazaSalariu() const override;
 
     virtual ~PersonalSecuritate() = default;
 };
