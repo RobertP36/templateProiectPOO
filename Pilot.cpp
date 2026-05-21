@@ -12,3 +12,8 @@ void Pilot::afisare() const {
     AngajatAeroport::afisare(); 
     std::cout << "Ore de zbor: " << getOreZbor() << " | Tip Licenta: " << licenta << "\n";
 }
+
+double Pilot::calculeazaSalariu() const {
+    double baza = 5000.0;
+    return baza + oreZbor * 12.5;
+}
