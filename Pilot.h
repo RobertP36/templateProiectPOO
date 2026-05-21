@@ -16,7 +16,8 @@ public:
     void afiseazaAtributii() const override;
 
     void afisare() const override;
-    
+    double calculeazaSalariu() const override;
+
     int getOreZbor() const { return oreZbor; }
     void setOreZbor(int ore) { oreZbor = ore; }
 };
