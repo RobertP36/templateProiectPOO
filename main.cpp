@@ -1,4 +1,7 @@
 #include "Meniu.h"
+#include "Depozit.h"
+#include "IObserver.h"
+#include "AngajatFactory.h"
 #include <iostream>
 
 int main() {
