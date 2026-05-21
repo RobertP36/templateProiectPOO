@@ -27,6 +27,40 @@ int main() {
         << Depozit<std::string>::getNumarDepozite() << "\n";
         std::cout << "\nProgramul s-a incheiat cu succes." << std::endl;
 
+        std::cout << "\nFactory: AngajatFactory\n";
+        
+    auto pilot1 = AngajatFactory::creeazaPilot("Ion Ionescu", 201, 1500, "ATPL");
+    pilot1->afisare();
+
+    auto stew1 = AngajatFactory::creeazaStewadesa("Maria Popescu", 202, 80);
+    stew1->afisare();
+
+    auto sec1 = AngajatFactory::creeazaSecuritate("Gheorghe Popa", 203, "Poarta A", true);
+    sec1->afisare();
+
+    auto teh1 = AngajatFactory::creeazaTehnic("Alexandru Stan", 204, "Avionica", 5);
+    teh1->afisare();
+
+    auto generic = AngajatFactory::creeaza("pilot", "Test Pilot", 299);
+    std::cout << "Creat prin factory generic: ";
+    generic->afisare();
+
+        std::cout << "\nObserver: SubjectZbor + LoggerZbor + AlertaIntarziere\n";
+
+    SubjectZbor monitorizareZbor;
+    LoggerZbor logger("Sistem-Log");
+    AlertaIntarziere alerta;
+
+    monitorizareZbor.adaugaObserver(&logger);
+    monitorizareZbor.adaugaObserver(&alerta);
+
+    monitorizareZbor.notificaObservatori("PLECARE",    "RO-201 Bucuresti->Paris, ora 10:30");
+    monitorizareZbor.notificaObservatori("INTARZIERE", "RO-202 Bucuresti->Londra, +45 min");
+    monitorizareZbor.notificaObservatori("ATERIZARE",  "RO-201 a aterizat la Paris");
+
+    monitorizareZbor.stergeObserver(&alerta);
+    monitorizareZbor.notificaObservatori("INTARZIERE", "RO-203 Bucuresti->Berlin, +20 min");
+        
     } catch (const CapacitateDepasitaException& e) {
         // Gasim exceptia
         std::cerr << "\n[EROARE CRITICA]: " << e.what() << std::endl;
