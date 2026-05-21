@@ -60,7 +60,21 @@ int main() {
 
     monitorizareZbor.stergeObserver(&alerta);
     monitorizareZbor.notificaObservatori("INTARZIERE", "RO-203 Bucuresti->Berlin, +20 min");
-        
+
+    std::cout << "\n   Polimorfism Salariu   \n";
+
+    std::vector<AngajatAeroport*> echipa;
+    echipa.push_back(new Pilot("Ion Ionescu", 201, 1500, "ATPL"));
+    echipa.push_back(new Stewardesa("Maria Popescu", 202, 80));
+    echipa.push_back(new PersonalSecuritate("Gheorghe Popa", 203, "Poarta A", true));
+    echipa.push_back(new PersonalTehnic("Alexandru Stan", 204, "Avionica", 5));
+
+for (auto* a : echipa) {
+    a->afisare();
+    std::cout << "  -> Salariu: " << a->calculeazaSalariu() << " RON\n";
+}
+
+for (auto* a : echipa) delete a;
     } catch (const CapacitateDepasitaException& e) {
         // Gasim exceptia
         std::cerr << "\n[EROARE CRITICA]: " << e.what() << std::endl;
