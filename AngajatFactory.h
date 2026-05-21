@@ -19,13 +19,13 @@ public:
         int id)
     {
         if (tip == "pilot")
-            return std::make_unique<Pilot>(nume, id);           // ore=0, licenta="PPL"
+            return std::make_unique<Pilot>(nume, id);           
         if (tip == "stewardesa")
-            return std::make_unique<Stewardesa>(nume, id);      // nrZboruri=0
+            return std::make_unique<Stewardesa>(nume, id);     
         if (tip == "securitate")
-            return std::make_unique<PersonalSecuritate>(nume, id); // zona="Terminal", arma=false
+            return std::make_unique<PersonalSecuritate>(nume, id); 
         if (tip == "tehnic")
-            return std::make_unique<PersonalTehnic>(nume, id);  // spec="General", ani=0
+            return std::make_unique<PersonalTehnic>(nume, id);  
 
         throw std::invalid_argument("Tip de angajat necunoscut: " + tip);
     }
