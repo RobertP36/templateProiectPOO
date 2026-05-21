@@ -13,3 +13,8 @@ void PersonalTehnic::afisare() const {
     std::cout << "Specializare: " << specializare 
               << " | Experienta: " << aniExperienta << " ani\n";
 }
+
+double PersonalTehnic::calculeazaSalariu() const {
+    double baza = 3500.0;
+    return baza + aniExperienta * 200.0;
+}
