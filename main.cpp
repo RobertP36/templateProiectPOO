@@ -13,7 +13,18 @@ int main() {
 
         // Bucla
         aeroport.run();
-
+        Depozit<std::string> ruteActive("Rute Active", 5);
+        ruteActive.adauga("Bucuresti -> Paris");
+        ruteActive.adauga("Bucuresti -> Londra");
+        ruteActive.adauga("Bucuresti -> Berlin");
+        std::cout << "Rute in depozit: " << ruteActive.size() << "\n";
+        std::cout << "Ruta 0: " << ruteActive.get(0) << "\n";
+        std::string* gasit = ruteActive.cauta(
+        [](const std::string& r){ return r.find("Paris") != std::string::npos; });
+        if (gasit)
+        std::cout << "Gasita ruta spre Paris: " << *gasit << "\n";
+        std::cout << "Total depozite create: "
+        << Depozit<std::string>::getNumarDepozite() << "\n";
         std::cout << "\nProgramul s-a incheiat cu succes." << std::endl;
 
     } catch (const CapacitateDepasitaException& e) {
