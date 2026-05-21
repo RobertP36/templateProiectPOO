@@ -17,6 +17,7 @@ public:
     virtual void afiseazaAtributii() const = 0; 
 
     virtual void afisare() const;
+    virtual double calculeazaSalariu() const = 0;
 };
 
 #endif
