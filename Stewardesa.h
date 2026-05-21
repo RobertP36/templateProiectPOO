@@ -19,6 +19,8 @@ public:
 
     void afisare() const override;
 
+    double calculeazaSalariu() const override;
+
     ~Stewardesa() = default;
 };
 
