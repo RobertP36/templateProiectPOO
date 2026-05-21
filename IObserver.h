@@ -42,7 +42,7 @@ public:
     void onNotificare(const std::string& eveniment,
                       const std::string& detalii) override {
         if (eveniment == "INTARZIERE") {
-            std::cout << "*** ALERTA INTARZIERE: " << detalii << " ***\n";
+            std::cout << "    ALERTA INTARZIERE: " << detalii << "\n";
         }
     }
 };
